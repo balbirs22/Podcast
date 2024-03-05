@@ -102,7 +102,7 @@ export const googleAuthSignIn = async (req, res, next) => {
 }
 
 export const logout = (req, res) => {
-    res.clearCookie("access_token").json({ message: "Logged out" });
+    res.clearCookie("access_token").json({ message: "Logging you  out" });
 }
 
 export const generateOTP = async (req, res) => {
@@ -185,7 +185,7 @@ export const verifyOTP = async (req, res, next) => {
         req.app.locals.resetSession = true;
         res.status(200).send({ message: "OTP verified" });
     }
-    return next(createError(201, "Wrong OTP"));
+    return next(createError(201, "Wrong OTP,Authentication failed"));
 }
 
 export const createResetSession = async (req, res, next) => {
